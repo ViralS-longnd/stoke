@@ -20,12 +20,15 @@ class BaseCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setListView($this->viewNamespace.'list');
-        CRUD::setCreateView($this->viewNamespace.'create');
-        CRUD::setDetailsRowView($this->viewNamespace.'details_row');
-        CRUD::setShowView($this->viewNamespace.'show');
-        CRUD::setEditView($this->viewNamespace.'edit');
-        CRUD::setReorderView($this->viewNamespace.'reorder');
+        $theme = config('backpack.base.view_namespace');
+        if ($theme != 'backpack::') {
+            CRUD::setListView($this->viewNamespace.'list');
+            CRUD::setCreateView($this->viewNamespace.'create');
+            CRUD::setDetailsRowView($this->viewNamespace.'details_row');
+            CRUD::setShowView($this->viewNamespace.'show');
+            CRUD::setEditView($this->viewNamespace.'edit');
+            CRUD::setReorderView($this->viewNamespace.'reorder');
+        }
     }
 
 }

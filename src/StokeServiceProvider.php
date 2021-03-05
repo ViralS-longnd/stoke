@@ -23,7 +23,7 @@ class StokeServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->loadHelpers();
     }
 
     /**
@@ -71,5 +71,13 @@ class StokeServiceProvider extends ServiceProvider
         $this->publishes($backpack_public_assets, 'public');
         $this->publishes($backpack_menu_contents_view, 'menu_contents');
         $this->publishes($error_views, 'errors');
+    }
+
+    /**
+     * Load the Backpack helper methods, for convenience.
+     */
+    public function loadHelpers()
+    {
+        require_once __DIR__.'/helpers.php';
     }
 }
